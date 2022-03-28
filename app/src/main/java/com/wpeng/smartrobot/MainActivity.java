@@ -2,7 +2,6 @@ package com.wpeng.smartrobot;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -13,24 +12,21 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -38,7 +34,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,19 +53,18 @@ import com.wpeng.smartrobot.util.JsonParser;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.Socket;
-import java.net.URI;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class MainActivity extends AppCompatActivity {
+    static SQLite Data;
+    static SQLiteDatabase Database;//数据库对象
+    static String insert_sql;
 
     String sent_text="";//发送文本
     String return_text="";//机器返回文本
@@ -121,6 +115,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Data=new SQLite(this,"Database",null,1);//构造数据库
+        Database = Data.getWritableDatabase();//获取可写数据库
+
         talk_view=findViewById(R.id.TalkView);//中间的交互界面
         Button sent_button=findViewById(R.id.sent_button);//发送按钮
         sent_editText=findViewById(R.id.sent_editText);//发送输入框
@@ -153,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sent_text = sent_editText.getText().toString();//获得输入框的文本
+
                 if(!sent_text.equals("")){
                     new Thread(){
                         public void run() {
@@ -220,7 +218,6 @@ public class MainActivity extends AppCompatActivity {
      * 用户发送文本时机器人返回函数
      */
     public void RobotReturn(String str){
-
         AddText(talk_view, str,false);//小喵的回话;
     }
 
@@ -306,14 +303,24 @@ public class MainActivity extends AppCompatActivity {
         textView.setBackgroundResource(R.drawable.talk_text);
         textView.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);//使文本靠左布局
 
+        //向数据库插入数据
         if(right_direction){//为true时先文本再头像
             imageView.setImageResource(R.drawable.me);
             talk_list.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+
+            insert_sql="insert into user(Character,type,contents)" +
+                    "values('user','text','" +
+                    str + "')";
         }
         else{//为false时先头像再文本
             imageView.setImageResource(R.drawable.miao);
             talk_list.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+
+            insert_sql="insert into user(Character,type,contents)" +
+                    "values('robot','text','" +
+                    str + "')";
         }
+        Database.execSQL(insert_sql);//向数据库插入数据
 
         talk_list.addView(imageView);//向布局中添加头像
         talk_list.addView(textView);//向布局中添加文本
@@ -442,6 +449,12 @@ public class MainActivity extends AppCompatActivity {
      */
     @SuppressLint("SetTextI18n")
     public void AddUrl(LinearLayout linearLayout, String url,String str){
+
+        insert_sql="insert into user(Character,type,contents)" +
+                "values('robot','url','" +
+                url + "')";
+        Database.execSQL(insert_sql);//向数据库插入数据
+
         LinearLayout url_list=new LinearLayout(MainActivity.this);
         url_list.setGravity(LinearLayout.HORIZONTAL);//设置方向
         url_list.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);//设置子布局排列方向为从左向右
@@ -566,6 +579,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void ToChatActivity(View view){
+        Intent intent=new Intent(MainActivity.this,ChatActivity.class);
+        startActivity(intent);
+    }
+
     /*
     图片回调函数
      */
@@ -599,6 +617,11 @@ public class MainActivity extends AppCompatActivity {
                     /*
                     在此处理发送图片的逻辑和机器人返回的值
                      */
+                    insert_sql="insert into user(Character,type,contents)" +
+                            "values('user','photo','" +
+                            imagePath + "')";
+                    Database.execSQL(insert_sql);//向数据库插入数据
+
                     RobotReturn(talk_view,bitmap,imagePath);//机器人返回
                 }
             }

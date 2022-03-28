@@ -96,6 +96,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="选择图片" />
+
+                <Button
+                    android:id="@+id/chat_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="聊天记录"
+                    android:onClick="ToChatActivity"/>
             </LinearLayout>
 
         </LinearLayout>
