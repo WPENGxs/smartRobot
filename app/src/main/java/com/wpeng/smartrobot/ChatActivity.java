@@ -87,6 +87,7 @@ public class ChatActivity extends AppCompatActivity {
                 refresh();
             }
         });
+        dialog.show();
 
     }
 
