@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (message.what){
                     case 0x01:
                         if(!answer.contains("***")) {
+                            answer=answer.substring(answer.indexOf('[')+1,answer.lastIndexOf(']'));
                             RobotReturn(ReturnAnswer(answer));//机器人返回
                             AddUrl(talk_view, url , "图谱演示");//返回url跳转
                         }else {
