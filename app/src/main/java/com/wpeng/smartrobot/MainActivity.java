@@ -242,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public String ReturnAnswer(String answer){
         String ReturnStr;
-        ReturnStr=answer.substring(answer.lastIndexOf('[')+1,answer.indexOf(']'));
+        ReturnStr=answer.substring(answer.indexOf('[')+1,answer.lastIndexOf(']'));
         ReturnStr=ReturnStr.replace('\'',' ');
 
         return ReturnStr;
