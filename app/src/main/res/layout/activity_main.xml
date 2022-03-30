@@ -23,7 +23,7 @@
             android:gravity="center"
             android:text="农业智聊"
             android:textColor="@color/white"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
 
         <ScrollView
             android:id="@+id/scrollView"
