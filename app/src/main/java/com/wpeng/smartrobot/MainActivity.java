@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                             RobotReturn(ReturnAnswer(answer));//机器人返回
                             AddUrl(talk_view, url , "图谱演示");//返回url跳转
                         }else {
-                            RobotReturn(ReturnAnswer(answer).substring(0,ReturnAnswer(answer).indexOf('*')));//机器人返回
+                            RobotReturn(ReturnAnswer(answer).substring(0,ReturnAnswer(answer).lastIndexOf("***")));//机器人返回
                         }
                         break;
                     case 0x02:
