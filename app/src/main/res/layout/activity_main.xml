@@ -9,8 +9,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,28 +17,29 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="智能农业聊天机器人"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:background="#1a4b7a"
+            android:gravity="center"
+            android:text="农业智聊"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
 
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:scrollbars="vertical"
-            android:rotation="180">
+            android:rotation="180"
+            android:scrollbars="vertical">
 
             <LinearLayout
                 android:id="@+id/TalkView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
-                android:rotation="180"
-                android:orientation="vertical" />
+                android:orientation="vertical"
+                android:rotation="180" />
             <!--android:rotation在ScrollView和LinearLayout各转180度是为了是气泡从下往上发-->
         </ScrollView>
 
@@ -75,6 +74,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/general_button"
                     android:text="发送"
+                    android:textColor="@color/white"
                     android:textSize="15sp" />
             </LinearLayout>
 
@@ -87,23 +87,31 @@
                     android:id="@+id/ifly_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
                     android:layout_weight="1"
-                    android:text="语音识别" />
+                    android:background="@drawable/general_button"
+                    android:text="语音识别"
+                    android:textColor="@color/white"/>
 
                 <Button
                     android:id="@+id/select_image_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="选择图片" />
+                    android:background="@drawable/general_button"
+                    android:text="选择图片"
+                    android:textColor="@color/white"/>
 
                 <Button
                     android:id="@+id/chat_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
                     android:layout_weight="1"
+                    android:background="@drawable/general_button"
+                    android:onClick="ToChatActivity"
                     android:text="聊天记录"
-                    android:onClick="ToChatActivity"/>
+                    android:textColor="@color/white"/>
             </LinearLayout>
 
         </LinearLayout>

@@ -7,8 +7,7 @@
         android:topRightRadius="5dp" />
 
     <!-- 设置填充颜色 -->
-    <solid android:color="@color/white" />
-
+    <solid android:color="#1a4b7a" />
     <!-- android:radius 弧形的半径 -->
     <corners android:radius="40dp"/>
     <!-- 设置边框颜色 -->

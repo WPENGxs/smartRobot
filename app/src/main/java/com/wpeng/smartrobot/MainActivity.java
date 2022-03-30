@@ -300,13 +300,14 @@ public class MainActivity extends AppCompatActivity {
         TextView textView=new TextView(MainActivity.this);//设置文本
         textView.setTextSize(15);
         textView.setTextColor(Color.rgb(0, 0, 0));//设置文本颜色为黑色
-        textView.setBackgroundResource(R.drawable.talk_text);
         textView.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);//使文本靠左布局
 
         //向数据库插入数据
         if(right_direction){//为true时先文本再头像
             imageView.setImageResource(R.drawable.me);
             talk_list.setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+            talk_list.setPadding(20,10,0,10);
+            textView.setBackgroundResource(R.drawable.talk_text);
 
             insert_sql="insert into user(Character,type,contents)" +
                     "values('user','text','" +
@@ -315,6 +316,9 @@ public class MainActivity extends AppCompatActivity {
         else{//为false时先头像再文本
             imageView.setImageResource(R.drawable.miao);
             talk_list.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+            talk_list.setPadding(0,10,20,10);
+            textView.setBackgroundResource(R.drawable.talk_text_blue);
+            textView.setTextColor(Color.rgb(255, 255, 255));//设置文本颜色为白色
 
             insert_sql="insert into user(Character,type,contents)" +
                     "values('robot','text','" +
@@ -363,6 +367,7 @@ public class MainActivity extends AppCompatActivity {
 
         talk_list.addView(imageView_head);//向布局中添加头像
         talk_list.addView(imageView_bitmap);//向布局中添加文本
+        talk_list.setPadding(20,10,0,10);
         linearLayout.addView(talk_list);
     }
 
@@ -404,6 +409,7 @@ public class MainActivity extends AppCompatActivity {
 
         talk_list.addView(imageView_head);//向布局中添加头像
         talk_list.addView(imageView_image);//向布局中添加文本
+        talk_list.setPadding(0,10,20,10);
         linearLayout.addView(talk_list);
     }
 
@@ -469,8 +475,8 @@ public class MainActivity extends AppCompatActivity {
         Button url_button=new Button(MainActivity.this);//设置跳转按钮
         url_button.setText(str);//设置按钮文本
         url_button.setTextSize(15);
-        url_button.setTextColor(Color.BLUE);
-        url_button.setBackgroundResource(R.drawable.general_button);//设置按钮样式
+        url_button.setTextColor(Color.rgb(255, 255, 255));//设置文本颜色为白色
+        url_button.setBackgroundResource(R.drawable.talk_text_blue);//设置按钮样式
         url_button.setOnClickListener(new View.OnClickListener() {//设置按钮监听
             @Override
             public void onClick(View v) {
@@ -481,6 +487,7 @@ public class MainActivity extends AppCompatActivity {
 
         url_list.addView(imageView_head);//向布局中添加头像
         url_list.addView(url_button);//向布局中添加文本
+        url_list.setPadding(0,10,20,10);
         linearLayout.addView(url_list);
     }
 

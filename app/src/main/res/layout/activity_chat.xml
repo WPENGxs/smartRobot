@@ -16,16 +16,18 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:background="#1a4b7a"
+            android:gravity="center"
             android:text="聊天记录"
-            android:textSize="25sp" />
+            android:textColor="@color/white"
+            android:textSize="30sp" />
 
         <ScrollView
             android:id="@+id/chat_scrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:rotation="180"
             android:scrollbars="vertical"
@@ -34,7 +36,7 @@
             <LinearLayout
                 android:id="@+id/chat_TalkView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="top"
                 android:orientation="vertical"
                 android:rotation="180" />
@@ -52,7 +54,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="DelAllChat"
-                android:text="删除所有聊天记录" />
+                android:text="删除所有聊天记录"
+                android:textColor="@color/white"
+                android:background="@drawable/general_button"/>
         </LinearLayout>
     </LinearLayout>
 
