@@ -244,14 +244,13 @@ public class MainActivity extends AppCompatActivity {
         String ReturnStr;
         ReturnStr=answer.substring(answer.indexOf('[')+1,answer.lastIndexOf(']'));
         ReturnStr=ReturnStr.replace('\'',' ');
-
         return ReturnStr;
     }
 
 
      public void SentFile(String path) throws IOException {
         new Thread(){
-            Message message=new Message();
+            final Message message=new Message();
             @Override
             public void run() {
                 try {
