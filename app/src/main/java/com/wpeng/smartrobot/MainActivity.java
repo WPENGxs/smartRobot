@@ -122,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
         Button sent_button=findViewById(R.id.sent_button);//发送按钮
         sent_editText=findViewById(R.id.sent_editText);//发送输入框
 
+        RobotReturn("我是小智,有什么问题都可以问我哟~");
+
         handler=new android.os.Handler(){
             public void handleMessage(Message message){
                 switch (message.what){
