@@ -205,6 +205,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button control_button=findViewById(R.id.control_button);
+        control_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToWebActivity("http://81.69.222.73:8080");
+            }
+        });
+
         Button select_img=findViewById(R.id.select_image_button);
         select_img.setOnClickListener(new View.OnClickListener() {
             @Override

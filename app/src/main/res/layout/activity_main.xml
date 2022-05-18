@@ -18,7 +18,7 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:background="#1a4b7a"
             android:gravity="center"
             android:text="农业智聊"
@@ -53,6 +53,13 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
+                <Button
+                    android:id="@+id/ifly_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_voice" />
+
                 <EditText
                     android:id="@+id/sent_editText"
                     android:layout_width="0dp"
@@ -84,13 +91,13 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/ifly_button"
+                    android:id="@+id/control_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/general_button"
-                    android:text="语音识别"
+                    android:text="控制面板"
                     android:textColor="@color/white"/>
 
                 <Button

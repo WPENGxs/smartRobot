@@ -7,7 +7,7 @@
     <stroke android:width="2dip" android:color="#DBD9D9" />
 
     <!-- android:radius 弧形的半径 -->
-    <corners android:radius="20dp"/>
+    <corners android:radius="10dp"/>
 
     <!-- padding：Button里面的文字与Button边界的间隔 -->
     <padding
