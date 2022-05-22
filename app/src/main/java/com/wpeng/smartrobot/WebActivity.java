@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -20,15 +21,17 @@ public class WebActivity extends AppCompatActivity {
 
         Bundle bundle=this.getIntent().getExtras();//接受来自MainActivity的值
         String Url=bundle.getString("Url");
+        Log.e("Url",Url);
 
         WebView webView=findViewById(R.id.webView);
         webView.setClickable(true);//设置可点击
         webView.getSettings().setJavaScriptEnabled(true);//支持JS
         webView.getSettings().setSupportZoom(true);//设置可以支持缩放
-        webView.getSettings().setBuiltInZoomControls(true);//设置出现缩放工具
+        webView.getSettings().setBuiltInZoomControls(false);//设置出现缩放工具
         webView.getSettings().setDomStorageEnabled(true);//设置为使用webView推荐的窗口，主要是为了配合下一个属性
         webView.getSettings().setUseWideViewPort(true);//扩大缩放比例
         webView.getSettings().setLoadWithOverviewMode(true);
+        //webView.getSettings().setTextZoom(200);//设置字号大小
 
         webView.loadUrl(Url);
 
