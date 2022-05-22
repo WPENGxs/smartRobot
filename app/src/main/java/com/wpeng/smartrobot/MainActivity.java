@@ -209,7 +209,9 @@ public class MainActivity extends AppCompatActivity {
         control_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToWebActivity("http://81.69.222.73:8080/#");
+                //ToWebActivity("http://81.69.222.73:8080/#");
+                Intent intent=new Intent(MainActivity.this,ControlActivity.class);
+                startActivity(intent);
             }
         });
 
