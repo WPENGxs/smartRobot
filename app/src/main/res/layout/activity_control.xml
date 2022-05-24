@@ -36,15 +36,448 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:background="@drawable/linear_grey"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:background="@drawable/ic_1" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="土壤湿度传感器1"
+                                    android:textColor="@color/black"
+                                    android:textSize="25sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:background="@drawable/linear_white"
+                                android:orientation="horizontal">
+
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:background="@drawable/ic_data" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="数据"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/hum"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="75dp"
+                                    android:text="0%"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:background="@drawable/linear_white"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:background="@drawable/ic_bump" />
+
+                                <Switch
+                                    android:id="@+id/hum_switch"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="70dp"
+                                    android:layout_weight="1"
+                                    android:text="水泵"
+                                    android:textOff="关闭"
+                                    android:textOn="打开"
+                                    android:textSize="20sp"
+                                    tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:background="@drawable/linear_white"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:background="@drawable/ic_range" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="范围调节"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp" />
+
+                                <Button
+                                    android:id="@+id/hum_btu"
+                                    android:layout_width="100dp"
+                                    android:layout_height="25dp"
+                                    android:layout_marginEnd="40dp"
+                                    android:background="@drawable/button_white"
+                                    android:text="50 - 70"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:background="@drawable/linear_grey"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:background="@drawable/ic_2" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="光照传感器1"
+                                    android:textColor="@color/black"
+                                    android:textSize="25sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:background="@drawable/linear_white"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:background="@drawable/ic_data" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="数据"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="75dp"
+                                    android:text="625Lx"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:background="@drawable/linear_white"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:background="@drawable/ic_light" />
+
+                                <Switch
+                                    android:id="@+id/light_switch"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="70dp"
+                                    android:layout_weight="1"
+                                    android:text="补光灯"
+                                    android:textOff="关闭"
+                                    android:textOn="打开"
+                                    android:textSize="20sp"
+                                    tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:background="@drawable/linear_white"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:background="@drawable/ic_range" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="范围调节"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp" />
+
+                                <Button
+                                    android:id="@+id/light_btu"
+                                    android:layout_width="100dp"
+                                    android:layout_height="25dp"
+                                    android:layout_marginEnd="40dp"
+                                    android:background="@drawable/button_white"
+                                    android:text="50 - 70"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/linear_grey"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:background="@drawable/ic_2" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="温度传感器1"
+                                    android:textColor="@color/black"
+                                    android:textSize="25sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:background="@drawable/linear_white"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:background="@drawable/ic_data" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="数据"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="75dp"
+                                    android:text="15℃"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:background="@drawable/linear_white"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:background="@drawable/ic_light" />
+
+                                <Switch
+                                    android:id="@+id/tem_switch_1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="70dp"
+                                    android:layout_weight="1"
+                                    android:text="换气扇"
+                                    android:textOff="关闭"
+                                    android:textOn="打开"
+                                    android:textSize="20sp"
+                                    tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:background="@drawable/linear_white"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:background="@drawable/ic_light" />
+
+                                <Switch
+                                    android:id="@+id/tem_switch_2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="70dp"
+                                    android:layout_weight="1"
+                                    android:text="加热泵"
+                                    android:textOff="关闭"
+                                    android:textOn="打开"
+                                    android:textSize="20sp"
+                                    tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:background="@drawable/linear_white"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:background="@drawable/ic_range" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="范围调节"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp" />
+
+                                <Button
+                                    android:id="@+id/tem_btu"
+                                    android:layout_width="100dp"
+                                    android:layout_height="25dp"
+                                    android:layout_marginEnd="40dp"
+                                    android:background="@drawable/button_white"
+                                    android:text="50 - 70"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="10dp">
+                    android:padding="5dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:gravity="center"
+                        android:layout_marginBottom="5dp"
                         android:background="@drawable/linear_grey">
 
                         <LinearLayout
@@ -53,12 +486,18 @@
                             android:gravity="center"
                             android:orientation="horizontal">
 
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:background="@drawable/ic_1"
+                                android:layout_marginBottom="5dp"/>
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="土壤湿度传感器1"
+                                android:text="土壤湿度传感器2"
                                 android:textColor="@color/black"
-                                android:layout_marginBottom="10dp"
+                                android:layout_marginBottom="5dp"
                                 android:textSize="25sp"/>
 
                         </LinearLayout>
@@ -67,8 +506,17 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/linear_white"
-                            android:layout_marginBottom="10dp"
+                            android:layout_marginBottom="5dp"
                             android:orientation="horizontal">
+
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="5dp"
+                                android:background="@drawable/ic_data"
+                                android:layout_marginBottom="5dp"/>
 
                             <TextView
                                 android:layout_width="0dp"
@@ -76,16 +524,15 @@
                                 android:layout_weight="1"
                                 android:text="数据"
                                 android:textColor="@color/black"
-                                android:textSize="25sp"/>
+                                android:textSize="20sp" />
 
                             <TextView
-                                android:id="@+id/hum"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginEnd="50dp"
+                                android:layout_marginEnd="75dp"
                                 android:text="0%"
                                 android:textColor="@color/black"
-                                android:textSize="25sp" />
+                                android:textSize="20sp" />
 
                         </LinearLayout>
 
@@ -93,19 +540,26 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/linear_white"
-                            android:layout_marginBottom="10dp"
+                            android:layout_marginBottom="5dp"
                             android:orientation="horizontal">
 
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="5dp"
+                                android:background="@drawable/ic_bump"
+                                android:layout_marginBottom="5dp"/>
+
                             <Switch
-                                android:id="@+id/hum_switch"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_marginEnd="70dp"
                                 android:layout_weight="1"
                                 android:text="水泵"
-                                android:textOn="打开"
                                 android:textOff="关闭"
-                                android:textSize="25sp"
-                                android:layout_marginEnd="50dp"
+                                android:textOn="打开"
+                                android:textSize="20sp"
                                 tools:ignore="UseSwitchCompatOrMaterialXml" />
 
                         </LinearLayout>
@@ -115,8 +569,15 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:background="@drawable/linear_white"
-                            android:layout_marginBottom="10dp"
+                            android:layout_marginBottom="5dp"
                             android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="5dp"
+                                android:background="@drawable/ic_range" />
 
                             <TextView
                                 android:layout_width="0dp"
@@ -124,17 +585,16 @@
                                 android:layout_weight="1"
                                 android:text="范围调节"
                                 android:textColor="@color/black"
-                                android:textSize="25sp"/>
+                                android:textSize="20sp" />
 
                             <Button
-                                android:id="@+id/hum_btu"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="100dp"
+                                android:layout_height="25dp"
+                                android:layout_marginEnd="40dp"
+                                android:background="@drawable/button_white"
                                 android:text="50 - 70"
-                                android:layout_marginEnd="50dp"
-                                android:background="@drawable/linear_white"
                                 android:textColor="@color/black"
-                                android:textSize="20sp"/>
+                                android:textSize="20sp" />
 
                         </LinearLayout>
 
@@ -144,7 +604,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="5dp"
                         android:gravity="center"
                         android:background="@drawable/linear_grey">
 
@@ -154,12 +614,18 @@
                             android:gravity="center"
                             android:orientation="horizontal">
 
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:background="@drawable/ic_2"
+                                android:layout_marginBottom="5dp"/>
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="光照传感器1"
+                                android:text="光照传感器2"
                                 android:textColor="@color/black"
-                                android:layout_marginBottom="10dp"
+                                android:layout_marginBottom="5dp"
                                 android:textSize="25sp"/>
 
                         </LinearLayout>
@@ -168,8 +634,16 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/linear_white"
-                            android:layout_marginBottom="10dp"
+                            android:layout_marginBottom="5dp"
                             android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="5dp"
+                                android:background="@drawable/ic_data"
+                                android:layout_marginBottom="5dp"/>
 
                             <TextView
                                 android:layout_width="0dp"
@@ -177,15 +651,15 @@
                                 android:layout_weight="1"
                                 android:text="数据"
                                 android:textColor="@color/black"
-                                android:textSize="25sp"/>
+                                android:textSize="20sp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginEnd="50dp"
-                                android:text="0Lx"
+                                android:layout_marginEnd="75dp"
+                                android:text="625Lx"
                                 android:textColor="@color/black"
-                                android:textSize="25sp" />
+                                android:textSize="20sp" />
 
                         </LinearLayout>
 
@@ -193,19 +667,26 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@drawable/linear_white"
-                            android:layout_marginBottom="10dp"
+                            android:layout_marginBottom="5dp"
                             android:orientation="horizontal">
 
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="5dp"
+                                android:background="@drawable/ic_light"
+                                android:layout_marginBottom="5dp"/>
+
                             <Switch
-                                android:id="@+id/light_switch"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_marginEnd="70dp"
                                 android:layout_weight="1"
                                 android:text="补光灯"
-                                android:textOn="打开"
                                 android:textOff="关闭"
-                                android:textSize="25sp"
-                                android:layout_marginEnd="50dp"
+                                android:textOn="打开"
+                                android:textSize="20sp"
                                 tools:ignore="UseSwitchCompatOrMaterialXml" />
 
                         </LinearLayout>
@@ -215,8 +696,15 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:background="@drawable/linear_white"
-                            android:layout_marginBottom="10dp"
+                            android:layout_marginBottom="5dp"
                             android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="5dp"
+                                android:background="@drawable/ic_range" />
 
                             <TextView
                                 android:layout_width="0dp"
@@ -224,17 +712,16 @@
                                 android:layout_weight="1"
                                 android:text="范围调节"
                                 android:textColor="@color/black"
-                                android:textSize="25sp"/>
+                                android:textSize="20sp" />
 
                             <Button
-                                android:id="@+id/light_btu"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="100dp"
+                                android:layout_height="25dp"
+                                android:layout_marginEnd="40dp"
+                                android:background="@drawable/button_white"
                                 android:text="50 - 70"
-                                android:layout_marginEnd="50dp"
-                                android:background="@drawable/linear_white"
                                 android:textColor="@color/black"
-                                android:textSize="20sp"/>
+                                android:textSize="20sp" />
 
                         </LinearLayout>
 

@@ -86,6 +86,7 @@ public class ControlActivity extends AppCompatActivity {
                 dialog.setTitle("设置范围");
 
                 LinearLayout linearLayout=new LinearLayout(ControlActivity.this);
+                linearLayout.setOrientation(LinearLayout.VERTICAL);
                 EditText up=new EditText(ControlActivity.this);
                 up.setHint("上限");
                 EditText down=new EditText(ControlActivity.this);
@@ -128,6 +129,7 @@ public class ControlActivity extends AppCompatActivity {
                 dialog.setTitle("设置范围");
 
                 LinearLayout linearLayout=new LinearLayout(ControlActivity.this);
+                linearLayout.setOrientation(LinearLayout.VERTICAL);
                 EditText up=new EditText(ControlActivity.this);
                 up.setHint("上限");
                 EditText down=new EditText(ControlActivity.this);
@@ -143,6 +145,61 @@ public class ControlActivity extends AppCompatActivity {
                         String up_str=up.getText().toString();
                         String down_str=down.getText().toString();
                         light_btu.setText(up_str+" - "+down_str);
+                        Toast.makeText(ControlActivity.this,"设置完毕",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                dialog.show();
+            }
+        });
+
+        sharedPreferences=getSharedPreferences("tem_d_1",MODE_PRIVATE);
+
+        Switch tem_switch_1=findViewById(R.id.tem_switch_1);
+        tem_switch_1.setChecked(sharedPreferences.getBoolean("tem_d_1",false));
+        tem_switch_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.putBoolean("tem_d_1", !hum_switch.isSelected());
+                editor.apply();
+            }
+        });
+
+        sharedPreferences=getSharedPreferences("tem_d_2",MODE_PRIVATE);
+
+        Switch tem_switch_2=findViewById(R.id.tem_switch_2);
+        tem_switch_2.setChecked(sharedPreferences.getBoolean("tem_d_2",false));
+        tem_switch_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.putBoolean("tem_d_2", !hum_switch.isSelected());
+                editor.apply();
+            }
+        });
+
+        Button tem_btu=findViewById(R.id.tem_btu);
+        tem_btu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder dialog=new AlertDialog.Builder(ControlActivity.this);
+                dialog.setTitle("设置范围");
+
+                LinearLayout linearLayout=new LinearLayout(ControlActivity.this);
+                linearLayout.setOrientation(LinearLayout.VERTICAL);
+                EditText up=new EditText(ControlActivity.this);
+                up.setHint("上限");
+                EditText down=new EditText(ControlActivity.this);
+                down.setHint("下限");
+                linearLayout.addView(up);
+                linearLayout.addView(down);
+
+                dialog.setView(linearLayout);
+                dialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                    @SuppressLint("SetTextI18n")
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String up_str=up.getText().toString();
+                        String down_str=down.getText().toString();
+                        tem_btu.setText(up_str+" - "+down_str);
                         Toast.makeText(ControlActivity.this,"设置完毕",Toast.LENGTH_SHORT).show();
                     }
                 });
