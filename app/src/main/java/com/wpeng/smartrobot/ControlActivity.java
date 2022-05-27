@@ -131,7 +131,7 @@ public class ControlActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         hum_up_str=up.getText().toString();
                         hum_down_str=down.getText().toString();
-                        hum_btu.setText(hum_up_str+" - "+hum_down_str);
+                        hum_btu.setText(hum_down_str+" - "+hum_up_str);
                         Toast.makeText(ControlActivity.this,"设置完毕",Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -174,7 +174,7 @@ public class ControlActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         light_up_str=up.getText().toString();
                         light_down_str=down.getText().toString();
-                        light_btu.setText(light_up_str+" - "+light_down_str);
+                        light_btu.setText(light_down_str+" - "+light_up_str);
                         Toast.makeText(ControlActivity.this,"设置完毕",Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -229,7 +229,7 @@ public class ControlActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         tem_up_str=up.getText().toString();
                         tem_down_str=down.getText().toString();
-                        tem_btu.setText(tem_up_str+" - "+tem_down_str);
+                        tem_btu.setText(tem_down_str+" - "+tem_up_str);
                         Toast.makeText(ControlActivity.this,"设置完毕",Toast.LENGTH_SHORT).show();
                     }
                 });
