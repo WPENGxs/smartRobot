@@ -230,6 +230,7 @@
                                     android:textSize="20sp" />
 
                                 <TextView
+                                    android:id="@+id/light"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="75dp"
@@ -322,7 +323,7 @@
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
                                     android:layout_marginBottom="5dp"
-                                    android:background="@drawable/ic_2" />
+                                    android:background="@drawable/ic_tem" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -358,6 +359,7 @@
                                     android:textSize="20sp" />
 
                                 <TextView
+                                    android:id="@+id/tem"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="75dp"
@@ -380,15 +382,15 @@
                                     android:layout_marginStart="20dp"
                                     android:layout_marginEnd="5dp"
                                     android:layout_marginBottom="5dp"
-                                    android:background="@drawable/ic_light" />
+                                    android:background="@drawable/ic_hot" />
 
                                 <Switch
-                                    android:id="@+id/tem_switch_1"
+                                    android:id="@+id/tem_switch_2"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="70dp"
                                     android:layout_weight="1"
-                                    android:text="换气扇"
+                                    android:text="加热"
                                     android:textOff="关闭"
                                     android:textOn="打开"
                                     android:textSize="20sp"
@@ -409,15 +411,15 @@
                                     android:layout_marginStart="20dp"
                                     android:layout_marginEnd="5dp"
                                     android:layout_marginBottom="5dp"
-                                    android:background="@drawable/ic_light" />
+                                    android:background="@drawable/ic_fan" />
 
                                 <Switch
-                                    android:id="@+id/tem_switch_2"
+                                    android:id="@+id/tem_switch_1"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="70dp"
                                     android:layout_weight="1"
-                                    android:text="加热泵"
+                                    android:text="换气扇"
                                     android:textOff="关闭"
                                     android:textOn="打开"
                                     android:textSize="20sp"

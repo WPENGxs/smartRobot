@@ -25,15 +25,34 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+@SuppressLint("UseSwitchCompatOrMaterialCode")
 public class ControlActivity extends AppCompatActivity {
 
     Handler handler;
     JSONObject jsonObject;
-    String data;
+
+    String data="0";
+    String tem_data="15";
+    String light_data="625";
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
+    Switch hum_switch;
+    Switch light_switch;
+    Switch tem_switch_1;
+    Switch tem_switch_2;
+
+    String hum_up_str="70";
+    String hum_down_str="50";
+    String tem_up_str="70";
+    String tem_down_str="50";
+    String light_up_str="70";
+    String light_down_str="50";
+
+    String tem=null;
+    String hum=null;
+    String light=null;
 
     @SuppressLint({"HandlerLeak", "UseSwitchCompatOrMaterialCode"})
     @Override
@@ -42,6 +61,8 @@ public class ControlActivity extends AppCompatActivity {
         setContentView(R.layout.activity_control);
 
         TextView hum=findViewById(R.id.hum);
+        TextView tem=findViewById(R.id.tem);
+        TextView light=findViewById(R.id.light);
         handler=new android.os.Handler(){
             @SuppressLint("SetTextI18n")
             public void handleMessage(Message message){
@@ -52,6 +73,12 @@ public class ControlActivity extends AppCompatActivity {
                     case 0x02:
                         Toast.makeText(ControlActivity.this,"获取失败，请检查服务器连接!",Toast.LENGTH_SHORT).show();
                         break;
+                    case 0x03:
+                        tem.setText(tem_data+"℃");
+                        break;
+                    case 0x04:
+                        light.setText(light_data+"Lx");
+                        break;
                 }
             }
         };
@@ -60,15 +87,18 @@ public class ControlActivity extends AppCompatActivity {
             @Override
             public void run() {
                 GetData();//获取服务器数据
-                handler.postDelayed(this,6000);//60 second delay
+                KeepHum();
+                GetTem();
+                GetLight();
+                handler.postDelayed(this,1000);//60 second delay
             }
         };
-        handler.postDelayed(runnable,0);//一个0秒的定时器（因为获取数据需要时间，索性就不写延时了）
+        handler.postDelayed(runnable,0);//一个0秒的定时器
 
         sharedPreferences=getSharedPreferences("hum_d",MODE_PRIVATE);
         editor=sharedPreferences.edit();
 
-        Switch hum_switch=findViewById(R.id.hum_switch);
+        hum_switch=findViewById(R.id.hum_switch);
         hum_switch.setChecked(sharedPreferences.getBoolean("hum_d",false));
         hum_switch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,9 +129,9 @@ public class ControlActivity extends AppCompatActivity {
                     @SuppressLint("SetTextI18n")
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String up_str=up.getText().toString();
-                        String down_str=down.getText().toString();
-                        hum_btu.setText(up_str+" - "+down_str);
+                        hum_up_str=up.getText().toString();
+                        hum_down_str=down.getText().toString();
+                        hum_btu.setText(hum_up_str+" - "+hum_down_str);
                         Toast.makeText(ControlActivity.this,"设置完毕",Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -111,7 +141,7 @@ public class ControlActivity extends AppCompatActivity {
 
         sharedPreferences=getSharedPreferences("light_d",MODE_PRIVATE);
 
-        Switch light_switch=findViewById(R.id.light_switch);
+        light_switch=findViewById(R.id.light_switch);
         light_switch.setChecked(sharedPreferences.getBoolean("light_d",false));
         light_switch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,9 +172,9 @@ public class ControlActivity extends AppCompatActivity {
                     @SuppressLint("SetTextI18n")
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String up_str=up.getText().toString();
-                        String down_str=down.getText().toString();
-                        light_btu.setText(up_str+" - "+down_str);
+                        light_up_str=up.getText().toString();
+                        light_down_str=down.getText().toString();
+                        light_btu.setText(light_up_str+" - "+light_down_str);
                         Toast.makeText(ControlActivity.this,"设置完毕",Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -154,7 +184,7 @@ public class ControlActivity extends AppCompatActivity {
 
         sharedPreferences=getSharedPreferences("tem_d_1",MODE_PRIVATE);
 
-        Switch tem_switch_1=findViewById(R.id.tem_switch_1);
+        tem_switch_1=findViewById(R.id.tem_switch_1);
         tem_switch_1.setChecked(sharedPreferences.getBoolean("tem_d_1",false));
         tem_switch_1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,7 +196,7 @@ public class ControlActivity extends AppCompatActivity {
 
         sharedPreferences=getSharedPreferences("tem_d_2",MODE_PRIVATE);
 
-        Switch tem_switch_2=findViewById(R.id.tem_switch_2);
+        tem_switch_2=findViewById(R.id.tem_switch_2);
         tem_switch_2.setChecked(sharedPreferences.getBoolean("tem_d_2",false));
         tem_switch_2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -197,9 +227,9 @@ public class ControlActivity extends AppCompatActivity {
                     @SuppressLint("SetTextI18n")
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String up_str=up.getText().toString();
-                        String down_str=down.getText().toString();
-                        tem_btu.setText(up_str+" - "+down_str);
+                        tem_up_str=up.getText().toString();
+                        tem_down_str=down.getText().toString();
+                        tem_btu.setText(tem_up_str+" - "+tem_down_str);
                         Toast.makeText(ControlActivity.this,"设置完毕",Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -221,7 +251,102 @@ public class ControlActivity extends AppCompatActivity {
                         String html = getHtml(url);
                         jsonObject=new JSONObject(html);
                         data=jsonObject.getJSONArray("data").getJSONObject(1).getString("data");
-                        Log.e("GetData","刷新数据,数据为:"+data);
+                        handler.sendMessage(message);
+                    } catch (Exception e) {
+                        message.what=0x02;
+                        handler.sendMessage(message);
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void KeepHum(){
+        if(Integer.parseInt(hum_down_str)>Integer.parseInt(data)){
+            hum_switch.setChecked(true);
+            hum="true";
+        }
+        else if(Integer.parseInt(hum_up_str)<Integer.parseInt(data)){
+            hum_switch.setChecked(false);
+            hum="false";
+        }
+        if(Integer.parseInt(data)==Integer.parseInt(hum_down_str)||
+                Integer.parseInt(data)==Integer.parseInt(hum_up_str)){
+            hum_switch.setChecked(false);
+            hum="keep";
+        }
+    }
+
+    public void GetTem(){
+        if(Integer.parseInt(tem_data)>=Integer.parseInt(tem_down_str)&&
+                Integer.parseInt(tem_data)<=Integer.parseInt(tem_up_str)){
+            tem_switch_1.setChecked(false);
+            tem_switch_2.setChecked(false);
+            tem="keep";
+        }
+        else if(Integer.parseInt(tem_down_str)>Integer.parseInt(tem_data)){
+            tem_switch_2.setChecked(true);
+            tem_switch_1.setChecked(false);
+            tem="true";
+        }
+        else if(Integer.parseInt(tem_up_str)<Integer.parseInt(tem_data)){
+            tem_switch_1.setChecked(true);
+            tem_switch_2.setChecked(false);
+            tem="false";
+        }
+
+
+        try {
+            new Thread(new Runnable() {
+                Message message=new Message();
+                String url="http://81.69.222.73:8080/tem?old_tem="+tem_data+"&raise="+ tem;
+                @Override
+                public void run() {
+                    try {
+                        message.what=0x03;
+                        tem_data = getHtml(url);
+                        handler.sendMessage(message);
+                    } catch (Exception e) {
+                        message.what=0x02;
+                        handler.sendMessage(message);
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void GetLight(){
+        if(Integer.parseInt(light_data)>=Integer.parseInt(light_down_str)&&
+                Integer.parseInt(light_data)<=Integer.parseInt(light_up_str)){
+            light_switch.setChecked(false);
+            light="keep";
+        }
+        else if(Integer.parseInt(light_down_str)>Integer.parseInt(light_data)){
+            light_switch.setChecked(true);
+            light="true";
+        }
+        else if(Integer.parseInt(light_up_str)<Integer.parseInt(light_data)){
+            light_switch.setChecked(false);
+            light="false";
+        }
+
+
+        try {
+            new Thread(new Runnable() {
+                Message message=new Message();
+                String url="http://81.69.222.73:8080/light?old_light="+light_data+"&raise="+light;
+                @Override
+                public void run() {
+                    try {
+                        message.what=0x04;
+                        light_data = getHtml(url);
                         handler.sendMessage(message);
                     } catch (Exception e) {
                         message.what=0x02;

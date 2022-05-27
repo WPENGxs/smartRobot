@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- 背景颜色 -->
-    <solid android:color="#cccccc" />
+    <solid android:color="#F2F1F7" />
 
     <!-- 边框的宽度和颜色颜色 -->
-    <stroke android:width="1dip" android:color="@color/black" />
+    <stroke android:width="1dip" android:color="#DADADA" />
 
     <!-- android:radius 弧形的半径 -->
     <corners android:radius="10dp"/>
