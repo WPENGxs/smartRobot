@@ -300,7 +300,7 @@
                                     android:background="@drawable/button_white"
                                     android:text="50 - 70"
                                     android:textColor="@color/black"
-                                    android:textSize="20sp" />
+                                    android:textSize="15sp" />
 
                             </LinearLayout>
 

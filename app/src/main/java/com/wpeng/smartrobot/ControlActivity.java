@@ -121,8 +121,8 @@ public class ControlActivity extends AppCompatActivity {
                 up.setHint("上限");
                 EditText down=new EditText(ControlActivity.this);
                 down.setHint("下限");
-                linearLayout.addView(up);
                 linearLayout.addView(down);
+                linearLayout.addView(up);
 
                 dialog.setView(linearLayout);
                 dialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
@@ -164,8 +164,8 @@ public class ControlActivity extends AppCompatActivity {
                 up.setHint("上限");
                 EditText down=new EditText(ControlActivity.this);
                 down.setHint("下限");
-                linearLayout.addView(up);
                 linearLayout.addView(down);
+                linearLayout.addView(up);
 
                 dialog.setView(linearLayout);
                 dialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
@@ -219,8 +219,8 @@ public class ControlActivity extends AppCompatActivity {
                 up.setHint("上限");
                 EditText down=new EditText(ControlActivity.this);
                 down.setHint("下限");
-                linearLayout.addView(up);
                 linearLayout.addView(down);
+                linearLayout.addView(up);
 
                 dialog.setView(linearLayout);
                 dialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
