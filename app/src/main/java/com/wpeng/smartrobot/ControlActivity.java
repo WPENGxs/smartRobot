@@ -90,10 +90,10 @@ public class ControlActivity extends AppCompatActivity {
                 KeepHum();
                 GetTem();
                 GetLight();
-                handler.postDelayed(this,1000);//60 second delay
+                handler.postDelayed(this,1000);
             }
         };
-        handler.postDelayed(runnable,0);//一个0秒的定时器
+        handler.postDelayed(runnable,1000);
 
         sharedPreferences=getSharedPreferences("hum_d",MODE_PRIVATE);
         editor=sharedPreferences.edit();
@@ -266,18 +266,18 @@ public class ControlActivity extends AppCompatActivity {
     }
 
     public void KeepHum(){
-        if(Integer.parseInt(hum_down_str)>Integer.parseInt(data)){
+        if(Integer.parseInt(data)>=Integer.parseInt(hum_down_str)&&
+                Integer.parseInt(data)<=Integer.parseInt(hum_up_str)){
+            hum_switch.setChecked(false);
+            hum="keep";
+        }
+        else if(Integer.parseInt(hum_down_str)>Integer.parseInt(data)){
             hum_switch.setChecked(true);
             hum="true";
         }
         else if(Integer.parseInt(hum_up_str)<Integer.parseInt(data)){
             hum_switch.setChecked(false);
             hum="false";
-        }
-        if(Integer.parseInt(data)==Integer.parseInt(hum_down_str)||
-                Integer.parseInt(data)==Integer.parseInt(hum_up_str)){
-            hum_switch.setChecked(false);
-            hum="keep";
         }
     }
 
@@ -326,7 +326,7 @@ public class ControlActivity extends AppCompatActivity {
     public void GetLight(){
         if(Integer.parseInt(light_data)>=Integer.parseInt(light_down_str)&&
                 Integer.parseInt(light_data)<=Integer.parseInt(light_up_str)){
-            light_switch.setChecked(false);
+            light_switch.setChecked(true);
             light="keep";
         }
         else if(Integer.parseInt(light_down_str)>Integer.parseInt(light_data)){
