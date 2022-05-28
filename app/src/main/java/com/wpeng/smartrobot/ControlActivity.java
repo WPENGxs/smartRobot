@@ -68,7 +68,7 @@ public class ControlActivity extends AppCompatActivity {
             public void handleMessage(Message message){
                 switch (message.what){
                     case 0x01:
-                        hum.setText(data);
+                        hum.setText(data+"%");
                         break;
                     case 0x02:
                         Toast.makeText(ControlActivity.this,"获取失败，请检查服务器连接!",Toast.LENGTH_SHORT).show();
@@ -251,6 +251,7 @@ public class ControlActivity extends AppCompatActivity {
                         String html = getHtml(url);
                         jsonObject=new JSONObject(html);
                         data=jsonObject.getJSONArray("data").getJSONObject(1).getString("data");
+                        data=data.substring(0,data.length()-1);
                         handler.sendMessage(message);
                     } catch (Exception e) {
                         message.what=0x02;
